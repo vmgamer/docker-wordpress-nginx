@@ -1,5 +1,13 @@
 #!/bin/bash
-if [ ! -f /usr/share/nginx/www/wp-config.php ]; then
+
+ # Install Wordpress
+ curl -o /usr/share/nginx/latest.tar.gz https://wordpress.org/latest.tar.gz 
+ cd /usr/share/nginx/ && tar xvf latest.tar.gz && rm latest.tar.gz
+ mv /usr/share/nginx/html/5* /usr/share/nginx/wordpress
+ rm -rf /usr/share/nginx/www
+ mv /usr/share/nginx/wordpress /usr/share/nginx/www
+ chown -R www-data:www-data /usr/share/nginx/www
+
   #mysql has to be started this way as it doesn't work to call from /etc/init.d
   /usr/bin/mysqld_safe &
   sleep 10s
@@ -55,7 +63,6 @@ ENDL
   mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
   mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
   killall mysqld
-fi
 
 # start all the services
 /usr/local/bin/supervisord -n
