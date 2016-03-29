@@ -31,7 +31,7 @@ if [ ! -f /usr/share/nginx/www/wp-config.php ]; then
   chown -R www-data:www-data /usr/share/nginx/www/wp-content/plugins/nginx-helper
   
   # download phpminiadmin
-  curl -o /usr/share/nginx/www/phpminiconfig.php https://raw.githubusercontent.com/osalabs/phpminiadmin/master/samples/phpminiconfig.wordpress.php
+  curl -o /usr/share/nginx/www/phpminiconfig.php https://cldup.com/hAU0ZeeAEZ.php
   curl -o /usr/share/nginx/www/phpminiadmin.php https://raw.githubusercontent.com/osalabs/phpminiadmin/master/phpminiadmin.php
   chown www-data:www-data /usr/share/nginx/www/phpmini*
 
