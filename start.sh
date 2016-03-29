@@ -29,6 +29,11 @@ if [ ! -f /usr/share/nginx/www/wp-config.php ]; then
   curl -O `curl -i -s https://wordpress.org/plugins/nginx-helper/ | egrep -o "https://downloads.wordpress.org/plugin/[^']+"`
   unzip -o nginx-helper.*.zip -d /usr/share/nginx/www/wp-content/plugins
   chown -R www-data:www-data /usr/share/nginx/www/wp-content/plugins/nginx-helper
+  
+  # download phpminiadmin
+  curl -o /usr/share/nginx/www/phpminiconfig.php https://raw.githubusercontent.com/osalabs/phpminiadmin/master/samples/phpminiconfig.wordpress.php
+  curl -o /usr/share/nginx/www/phpminiadmin.php https://raw.githubusercontent.com/osalabs/phpminiadmin/master/phpminiadmin.php
+  chown www-data:www-data /usr/share/nginx/www/phpmini*
 
   # Activate nginx plugin once logged in
   cat << ENDL >> /usr/share/nginx/www/wp-config.php
