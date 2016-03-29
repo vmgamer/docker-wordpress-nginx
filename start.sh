@@ -4,8 +4,8 @@
  curl -o /usr/share/nginx/latest.tar.gz https://wordpress.org/latest.tar.gz 
  cd /usr/share/nginx/ && tar xvf latest.tar.gz && rm latest.tar.gz
  mv /usr/share/nginx/html/5* /usr/share/nginx/wordpress
- rm -rf /usr/share/nginx/www
- mv /usr/share/nginx/wordpress /usr/share/nginx/www
+ # rm -rf /usr/share/nginx/www
+ mv /usr/share/nginx/wordpress/* /usr/share/nginx/www/
  chown -R www-data:www-data /usr/share/nginx/www
 
   #mysql has to be started this way as it doesn't work to call from /etc/init.d
